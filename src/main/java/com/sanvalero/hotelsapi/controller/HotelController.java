@@ -2,9 +2,7 @@ package com.sanvalero.hotelsapi.controller;
 
 import com.sanvalero.hotelsapi.domain.Hotel;
 import com.sanvalero.hotelsapi.domain.Room;
-import com.sanvalero.hotelsapi.repository.RoomRepository;
 import com.sanvalero.hotelsapi.service.HotelService;
-import com.sanvalero.hotelsapi.service.RoomService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -38,7 +36,6 @@ public class HotelController {
             @ApiResponse(responseCode = "404", description = "El puesto no existe",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-
     @GetMapping(value = "/hotels", produces = "application/json")
     public Set<Hotel> getHotels() {
         return hotelService.findAll();
@@ -49,7 +46,6 @@ public class HotelController {
             @ApiResponse(responseCode = "200", description = "Existe el hotel", content = @Content(schema = @Schema(implementation = Hotel.class))),
 
     })
-
     @GetMapping(value = "/hotels/{location}/{category}", produces = "application/json")
     public ResponseEntity<Set<Hotel>> getHotelByLocationAndCategory(@PathVariable String location, @PathVariable String category) {
         Set<Hotel> myHotels = hotelService.findByLocationAndCategory(location, category);
@@ -71,9 +67,8 @@ public class HotelController {
             @ApiResponse(responseCode = "201", description = "Se registra una nueva habitación en un hotel",
                     content = @Content(schema = @Schema(implementation = Room.class)))
     })
-
     @PostMapping(value = "/hotels/{id}/room", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Room> addRoomToHotel(@PathVariable int id, @RequestBody Room room) {
+    public ResponseEntity<Room> addRoomToHotel(@PathVariable long id, @RequestBody Room room) {
         Room addedRoom = hotelService.addRoomToHotel(id, room);
         return new ResponseEntity<>(addedRoom, HttpStatus.CREATED);
     }

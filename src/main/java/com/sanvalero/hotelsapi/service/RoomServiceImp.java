@@ -29,8 +29,8 @@ public class RoomServiceImp implements RoomService {
     }
 
     @Override
-    public Optional<Room> findRoomById(int id) {
-        return roomRepository.findById((long) id);
+    public Optional<Room> findRoomById(long id) {
+        return roomRepository.findById(id);
     }
 
     @Override
@@ -61,16 +61,16 @@ public class RoomServiceImp implements RoomService {
     }*/
 
     @Override
-    public Room modifyRoom(int id, Room newRoom) {
-        Room room = roomRepository.findById((long)id)
+    public Room modifyRoom(long id, Room newRoom) {
+        Room room = roomRepository.findById(id)
                 .orElseThrow(() -> new RoomNotFoundException(id));
         newRoom.setId(room.getId());
         return roomRepository.save(newRoom);
     }
 
     @Override
-    public void deleteRoom(int id) {
-        Room room = roomRepository.findById((long) id)
+    public void deleteRoom(long id) {
+        Room room = roomRepository.findById(id)
                 .orElseThrow(() -> new RoomNotFoundException(id));
         roomRepository.delete(room);
     }

@@ -1,6 +1,5 @@
 package com.sanvalero.hotelsapi.service;
 
-import com.sanvalero.hotelsapi.domain.Hotel;
 import com.sanvalero.hotelsapi.domain.Room;
 
 import java.util.Optional;
@@ -13,11 +12,11 @@ import java.util.Set;
 public interface RoomService {
 
     Set<Room> findAll();
-    Optional<Room> findRoomById(int id);
+    Optional<Room> findRoomById(long id);
     Set<Room> findBySize(String size);
 //    Set<Room> findByHotelAndPrize(Hotel hotel, float minPrize, float maxPrize);
     Set<Room> findByAvailable(boolean available);
 //    Set<Room> findByHotel(Hotel hotel);
-    Room modifyRoom(int id, Room room);
-    void deleteRoom(int id);
+    Room modifyRoom(long id, Room room);
+    void deleteRoom(long id);
 }

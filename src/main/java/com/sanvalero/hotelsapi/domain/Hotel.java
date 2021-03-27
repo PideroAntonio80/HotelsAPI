@@ -5,7 +5,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -44,18 +46,20 @@ public class Hotel {
     @NotBlank
     @Column
     private String location;
-    @Schema(description = "Identificadores de las habitaciones que tiene el Hotel", example = "1", required = true)
-    @NotBlank
-    @Column
-    @OneToMany(mappedBy = "hotel_id")
-    private Set<Room> rooms;
+    /*@Schema(description = "Identificadores de las habitaciones que tiene el Hotel", example = "1", required = true)
+    @OneToMany(mappedBy = "hotel")
+    private List<Room> rooms;*/
 
-    public void includeRoom(Room room) {
-        if(rooms == null) rooms = new HashSet<>();
+    /*public void includeRoom(Room room) {
+        if(rooms == null) rooms = new ArrayList<>();
 
         rooms.add(room);
-        room.setHotel_id(this);
-    }
+        room.setHotel(this);
+    }*/
 
+    /*public void includeRoom(long idRoom) {
+        if(rooms.size() == 0) rooms = new ArrayList<>();
 
+        rooms.add(idRoom);
+    }*/
 }

@@ -22,7 +22,7 @@ public class Room {
     @Schema(description = "Identificador de la Habitacion", example = "1", required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Schema(description = "Tamaño de la habitacion", example = "mediana")
     @Column
     private String size;
@@ -44,5 +44,5 @@ public class Room {
     @NotBlank
     @ManyToOne
     @JoinColumn(name = "hotel_id")
-    private Hotel hotel_id;
+    private Hotel hotel;
 }

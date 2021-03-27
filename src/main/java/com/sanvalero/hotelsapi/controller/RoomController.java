@@ -10,11 +10,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
 import java.util.Set;
 
 /**
@@ -36,7 +34,6 @@ public class RoomController {
             @ApiResponse(responseCode = "404", description = "El puesto no existe",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-
     @GetMapping(value = "/rooms", produces = "application/json")
     public Set<Room> getRooms() {
         return roomService.findAll();
