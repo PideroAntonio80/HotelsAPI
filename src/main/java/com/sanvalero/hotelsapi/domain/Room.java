@@ -42,7 +42,7 @@ public class Room {
     private boolean available;
     @Schema(description = "identificador del hotel al que pertenece esta habitacion", example = "1", required = true)
     @NotBlank
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne
     @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+    private Hotel hotel_id;
 }

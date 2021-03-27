@@ -1,6 +1,5 @@
 package com.sanvalero.hotelsapi.repository;
 
-import com.sanvalero.hotelsapi.domain.Hotel;
 import com.sanvalero.hotelsapi.domain.Room;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -18,5 +17,5 @@ public interface RoomRepository extends CrudRepository<Room, Long> {
     Set<Room> findBySize(String size);
 //    Set<Room> findByHotelAndPrize(Hotel hotel, float minPrize, float maxPrize);
     Set<Room> findByAvailable(boolean available);
-    Set<Room> findByHotel(Hotel hotel);
+//    Set<Room> findByHotel(Hotel hotel);
 }

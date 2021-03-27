@@ -17,9 +17,7 @@ public interface RoomService {
     Set<Room> findBySize(String size);
 //    Set<Room> findByHotelAndPrize(Hotel hotel, float minPrize, float maxPrize);
     Set<Room> findByAvailable(boolean available);
-    Set<Room> findByHotel(Hotel hotel);
-
-    Room addRoom(Room room);
+//    Set<Room> findByHotel(Hotel hotel);
     Room modifyRoom(int id, Room room);
     void deleteRoom(int id);
 }

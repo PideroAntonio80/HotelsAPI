@@ -1,6 +1,7 @@
 package com.sanvalero.hotelsapi.service;
 
 import com.sanvalero.hotelsapi.domain.Hotel;
+import com.sanvalero.hotelsapi.domain.Room;
 
 import java.util.Optional;
 import java.util.Set;
@@ -18,6 +19,7 @@ public interface HotelService {
     Set<Hotel> findByLocationAndCategory(String location, String category);
 
     Hotel addHotel(Hotel hotel);
+    Room addRoomToHotel(int id, Room room);
     Hotel modifyHotel(int id, Hotel hotel);
     void deleteHotel(int id);
 

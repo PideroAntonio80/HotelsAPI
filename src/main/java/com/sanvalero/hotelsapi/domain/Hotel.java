@@ -24,7 +24,7 @@ public class Hotel {
     @Schema(description = "Identificador del Hotel", example = "1", required = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Schema(description = "Nombre del Hotel", example = "Pirineos", required = true)
     @NotBlank
     @Column
@@ -46,14 +46,15 @@ public class Hotel {
     private String location;
     @Schema(description = "Identificadores de las habitaciones que tiene el Hotel", example = "1", required = true)
     @NotBlank
-    @OneToMany(mappedBy = "hotel", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @Column
+    @OneToMany(mappedBy = "hotel_id")
     private Set<Room> rooms;
 
     public void includeRoom(Room room) {
         if(rooms == null) rooms = new HashSet<>();
 
         rooms.add(room);
-        room.setHotel(this);
+        room.setHotel_id(this);
     }
 
 

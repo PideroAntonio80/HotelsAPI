@@ -55,15 +55,10 @@ public class RoomServiceImp implements RoomService {
         return roomRepository.findByAvailable(available);
     }
 
-    @Override
+    /*@Override
     public Set<Room> findByHotel(Hotel hotel) {
         return roomRepository.findByHotel(hotel);
-    }
-
-    @Override
-    public Room addRoom(Room room) {
-        return roomRepository.save(room);
-    }
+    }*/
 
     @Override
     public Room modifyRoom(int id, Room newRoom) {

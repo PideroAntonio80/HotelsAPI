@@ -1,7 +1,10 @@
 package com.sanvalero.hotelsapi.controller;
 
 import com.sanvalero.hotelsapi.domain.Hotel;
+import com.sanvalero.hotelsapi.domain.Room;
+import com.sanvalero.hotelsapi.repository.RoomRepository;
 import com.sanvalero.hotelsapi.service.HotelService;
+import com.sanvalero.hotelsapi.service.RoomService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -55,11 +58,23 @@ public class HotelController {
 
     @Operation(summary = "Registra un nuevo hotel")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Se registra un nuevo hotel", content = @Content(schema = @Schema(implementation = Hotel.class)))
+            @ApiResponse(responseCode = "201", description = "Se registra un nuevo hotel", content = @Content(schema = @Schema(implementation = Hotel.class)))
     })
     @PostMapping(value = "/hotels", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Hotel> addHotel(@RequestBody Hotel hotel) {
         Hotel addedHotel = hotelService.addHotel(hotel);
         return new ResponseEntity<>(addedHotel, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Registra una nueva habitación en un hotel")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Se registra una nueva habitación en un hotel",
+                    content = @Content(schema = @Schema(implementation = Room.class)))
+    })
+
+    @PostMapping(value = "/hotels/{id}/room", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Room> addRoomToHotel(@PathVariable int id, @RequestBody Room room) {
+        Room addedRoom = hotelService.addRoomToHotel(id, room);
+        return new ResponseEntity<>(addedRoom, HttpStatus.CREATED);
     }
 }
